@@ -1,0 +1,54 @@
+.table {
+    text-align: center;
+    }
+    .btn-primary {
+        color: white;
+        background-color: #ff9016;
+        border-color: #e48117
+    }
+    
+    .btn-primary:hover {
+        color: white;
+        background-color: #ff8e16d7;
+        border-color: #e48117
+    }
+    
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .show>.btn-primary.dropdown-toggle {
+        color: #ffffff;
+        background-color: #ec8516;
+        border-color: #ec983f
+    }
+
+    .btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 .2rem #ff9625
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem #ff9019
+}
+
+    
+    textarea:focus,
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="datetime"]:focus,
+    input[type="datetime-local"]:focus,
+    input[type="date"]:focus,
+    input[type="month"]:focus,
+    input[type="time"]:focus,
+    input[type="week"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="url"]:focus,
+    input[type="search"]:focus,
+    input[type="tel"]:focus,
+    input[type="color"]:focus,
+    .uneditable-input:focus {   
+      border-color: #ff9016;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #ff9016;
+      outline: 0 none;
+    }

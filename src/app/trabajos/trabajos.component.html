@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <!--Imagen kruger-->
+            <img class="rounded mx-auto d-block" src="https://k2a.krugercorp.com/images/logokruger.svg"
+                alt="Responsive image">
+            <br>
+
+            <!--Modal-->
+            <ng-template #content let-c="close" let-d="dismiss">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Hey!</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Aun no has completado tareas, no hay nada que eliminar</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Entendido</button>
+                </div>
+            </ng-template>
+
+            <!--Agregar tarea-->
+            <button type="button" class="btn btn-block btn-primary" (click)="collapse.toggle()"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                Agregar tarea
+            </button>
+            <!--Input de tarea-->
+            <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                <br>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="new_trabajo" (keyup.enter)="agregarTarea()">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button"
+                            (click)="agregarTarea()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <!--Tabla de datos-->
+            <table class="table table-light table-borderless table-responsive ">
+                <thead class="thead-light">
+                    <tr>
+                        <!--Botones de tareas-->
+                        <th scope="col-sm">
+                            <div class="btn-sm">
+                                <button class="btn btn-sm btn-primary" (click)="getAllTrabajos()">Ver todas las
+                                    tareas</button>
+                            </div>
+                        </th>
+                        <th scope="col-sm">
+                            <div class="btn-sm">
+                                <button class="btn btn-sm btn-primary" (click)="getActivos()">Ver tareas
+                                    activas</button>
+                            </div>
+                        </th>
+                        <th scope="col-sm">
+                            <div class="btn-sm">
+                                <button class="btn btn-sm btn-primary" (click)="getCompletados()">Ver tareas
+                                    completadas</button>
+                            </div>
+                        </th>
+                        <th scope="col-sm">
+                            <div class="btn-sm">
+                                <button class="btn btn-sm btn-primary" (click)="deleteCompletados(content)">Eliminar
+                                    tareas
+                                    completadas</button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" scope="col">Trabajo</th>
+                        <th colspan="2" scope="col">Completado?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Obtener e imprimir datos-->
+                    <tr class="animated fadeIn" *ngFor="let trabajo of trabajos; index as i"
+                        [ngClass]="trabajo.active && ['bg-light']">
+                        <td colspan="3">{{ trabajo.work }}</td>
+                        <td>
+                            <div class="form-check" *ngIf="trabajo.active">
+                                <label class="form-check-label">
+                                    <input type="checkbox" [checked]="true" (change)="cambiarEstado(i)">
+                                </label>
+                            </div>
+                            <div class="form-check" *ngIf="!trabajo.active">
+                                <label class="form-check-label">
+                                    <input type="checkbox" [checked]="false" (change)="cambiarEstado(i)">
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <td colspan="4">Total: {{trabajos.length}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

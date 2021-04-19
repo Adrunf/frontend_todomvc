@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap";
+
+* {
+  font: 500 20px/32px Roboto, 'MuseoModerno', sans-serif !important
+}
